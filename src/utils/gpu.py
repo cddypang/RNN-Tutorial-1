@@ -19,3 +19,10 @@ def check_if_gpu_available(gpu_name):
         return False
     else:
         return True
+
+if __name__ == '__main__':
+    device_name = '/gpu:0'
+    if check_if_gpu_available(device_name):
+        print(device_name + 'OK')
+    else:
+        print(device_name + 'not OK')
