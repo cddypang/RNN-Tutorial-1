@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import numpy as np
@@ -11,17 +11,17 @@ import tensorflow as tf
 from tensorflow.python.ops import ctc_ops
 
 # Custom modules
-from features.utils.text import ndarray_to_text, sparse_tuple_to_texts
+from src.features.utils.text import ndarray_to_text, sparse_tuple_to_texts
 
 # in future different than utils class
-from models.RNN.utils import create_optimizer
-from data_manipulation.datasets import read_datasets
-from utils.set_dirs import get_conf_dir, get_model_dir
-import utils.gpu as gpu_tool
+from src.models.RNN.utils import create_optimizer
+from src.data_manipulation.datasets import read_datasets
+from src.utils.set_dirs import get_conf_dir, get_model_dir
+import src.utils.gpu as gpu_tool
 
 # Import the setup scripts for different types of model
-from models.RNN.rnn import BiRNN as BiRNN_model
-from models.RNN.rnn import SimpleLSTM as SimpleLSTM_model
+from src.models.RNN.rnn import BiRNN as BiRNN_model
+from src.models.RNN.rnn import SimpleLSTM as SimpleLSTM_model
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +61,7 @@ class Tf_train_ctc(object):
 
         # Load the configuration file depending on debug True/False
         self.debug = debug
-        self.conf_path = get_conf_dir(debug=self.debug)
+        self.conf_path = get_conf_dir(debug=self.debug, home_dir='../..')
         self.conf_path = os.path.join(self.conf_path, config_file)
         self.load_configs()
 
@@ -149,7 +149,7 @@ class Tf_train_ctc(object):
 
     def set_up_directories(self, model_name):
         # Set up model directory
-        self.model_dir = os.path.join(get_model_dir(), self.model_dir)
+        self.model_dir = os.path.join(get_model_dir(home_dir='../..'), self.model_dir)
         # summary will contain logs
         self.SUMMARY_DIR = os.path.join(
             self.model_dir, "summary", self.session_name)

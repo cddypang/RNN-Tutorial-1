@@ -5,7 +5,7 @@ import scipy.io.wavfile as wav
 
 import numpy as np
 from python_speech_features import mfcc
-from features.utils.text import text_to_char_array, normalize_txt_file
+from src.features.utils.text import text_to_char_array, normalize_txt_file
 
 
 def load_wavfile(wavfile):

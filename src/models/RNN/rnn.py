@@ -4,7 +4,7 @@ import os
 import tensorflow as tf
 from configparser import ConfigParser
 
-from models.RNN.utils import variable_on_cpu
+from src.models.RNN.utils import variable_on_cpu
 
 
 def SimpleLSTM(conf_path, input_tensor, seq_length):

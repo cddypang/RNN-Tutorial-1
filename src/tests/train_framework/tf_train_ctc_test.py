@@ -5,7 +5,7 @@ import logging
 import tensorflow as tf
 
 # custom modules
-import train_framework.tf_train_ctc as tf_train
+import src.train_framework.tf_train_ctc as tf_train
 
 
 class TestTrain_ctc(unittest.TestCase):

@@ -6,9 +6,9 @@ from configparser import ConfigParser
 import logging
 from collections import namedtuple
 
-from features.utils.load_audio_to_mem import get_audio_and_transcript, pad_sequences
-from features.utils.text import sparse_tuple_from
-from utils.set_dirs import get_data_dir
+from src.features.utils.load_audio_to_mem import get_audio_and_transcript, pad_sequences
+from src.features.utils.text import sparse_tuple_from
+from src.utils.set_dirs import get_data_dir
 
 
 DataSets = namedtuple('DataSets', 'train dev test')
@@ -152,7 +152,7 @@ def _get_data_set_dict(conf_path, sets):
     parser = ConfigParser(os.environ)
     parser.read(conf_path)
     config_header = 'data'
-    data_dir = get_data_dir(parser.get(config_header, 'data_dir'))
+    data_dir = get_data_dir(parser.get(config_header, 'data_dir'), home_dir='../..')
     data_dict = {}
 
     if 'train' in sets:
